@@ -1,4 +1,4 @@
-package trainingapp.product.fruit;
+package trainingapp.product;
 
 import lombok.*;
 
@@ -13,58 +13,57 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public
-class Fruit {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    String fruitName;
+    String name;
     double fatNumber;
     double proteinsNumber;
     double carbohydratesNumber;
     int kcal;
 
-    public static class FruitBuilder {
-        String fruitName;
+    public static class ProductBuilder {
+        String name;
         double fatNumber;
         double proteinsNumber;
         double carbohydratesNumber;
         int kcal;
 
-        public FruitBuilder withName(String fruitName) {
-            this.fruitName = fruitName;
+        public ProductBuilder withName(String name) {
+            this.name = name;
             return this;
         }
 
-        public FruitBuilder withKcal(int kcal) {
-            this.kcal=kcal;
+        public ProductBuilder withKcal(int kcal) {
+            this.kcal = kcal;
             return this;
         }
 
-        public FruitBuilder withFatNumber(double fatNumber) {
+        public ProductBuilder withFatNumber(double fatNumber) {
             this.fatNumber = fatNumber;
             return this;
         }
 
-        public FruitBuilder withProteinsNumber(double proteinsNumber) {
+        public ProductBuilder withProteinsNumber(double proteinsNumber) {
             this.proteinsNumber = proteinsNumber;
             return this;
         }
 
-        public FruitBuilder withCarbohydratesNumber(double carbohydratesNumber) {
+        public ProductBuilder withCarbohydratesNumber(double carbohydratesNumber) {
             this.carbohydratesNumber = carbohydratesNumber;
             return this;
         }
 
-        public Fruit build() {
-            Fruit fruit = new Fruit();
-            fruit.carbohydratesNumber = this.carbohydratesNumber;
-            fruit.fatNumber = this.fatNumber;
-            fruit.proteinsNumber = this.proteinsNumber;
-            fruit.fruitName = this.fruitName;
-            fruit.kcal=this.kcal;
-            return fruit;
+        public Product build() {
+            Product product = new Product();
+            product.carbohydratesNumber = this.carbohydratesNumber;
+            product.fatNumber = this.fatNumber;
+            product.proteinsNumber = this.proteinsNumber;
+            product.name = this.name;
+            product.kcal = this.kcal;
+            return product;
         }
     }
 }

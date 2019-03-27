@@ -5,17 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import trainingapp.product.fruit.Fruit;
-import trainingapp.product.fruit.FruitRepository;
+import trainingapp.product.Fruit;
+import trainingapp.product.ProductRepository;
 
 @Component
 @Slf4j
 public class InitialData {
 
-    private final FruitRepository fruitRepository;
+    private final ProductRepository fruitRepository;
 
     @Autowired
-    public InitialData(FruitRepository fruitRepository) {
+    public InitialData(ProductRepository fruitRepository) {
         this.fruitRepository = fruitRepository;
     }
 

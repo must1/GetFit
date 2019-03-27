@@ -20,16 +20,18 @@ public class Product {
     private int id;
     String name;
     double fatNumber;
-    double proteinsNumber;
+    double proteinNumber;
+    ProductType TYPE;
     double carbohydratesNumber;
-    int kcal;
+    int kcalNumber;
 
     public static class ProductBuilder {
         String name;
         double fatNumber;
-        double proteinsNumber;
+        ProductType TYPE;
+        double proteinNumber;
         double carbohydratesNumber;
-        int kcal;
+        int kcalNumber;
 
         public ProductBuilder withName(String name) {
             this.name = name;
@@ -37,7 +39,12 @@ public class Product {
         }
 
         public ProductBuilder withKcal(int kcal) {
-            this.kcal = kcal;
+            this.kcalNumber = kcal;
+            return this;
+        }
+
+        public ProductBuilder withType(ProductType typeOfProduct) {
+            this.TYPE = typeOfProduct;
             return this;
         }
 
@@ -47,7 +54,7 @@ public class Product {
         }
 
         public ProductBuilder withProteinsNumber(double proteinsNumber) {
-            this.proteinsNumber = proteinsNumber;
+            this.proteinNumber = proteinsNumber;
             return this;
         }
 
@@ -60,9 +67,10 @@ public class Product {
             Product product = new Product();
             product.carbohydratesNumber = this.carbohydratesNumber;
             product.fatNumber = this.fatNumber;
-            product.proteinsNumber = this.proteinsNumber;
+            product.proteinNumber = this.proteinNumber;
             product.name = this.name;
-            product.kcal = this.kcal;
+            product.TYPE = TYPE;
+            product.kcalNumber = this.kcalNumber;
             return product;
         }
     }

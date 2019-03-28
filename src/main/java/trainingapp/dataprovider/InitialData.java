@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import trainingapp.account.Account;
+import trainingapp.account.AccountRepository;
 import trainingapp.product.Product;
 import trainingapp.product.ProductRepository;
 import trainingapp.product.ProductType;
@@ -14,10 +16,12 @@ import trainingapp.product.ProductType;
 public class InitialData {
 
     private final ProductRepository productRepository;
+    private final AccountRepository accountRepository;
 
     @Autowired
-    public InitialData(ProductRepository productRepository) {
+    public InitialData(ProductRepository productRepository, AccountRepository accountRepository) {
         this.productRepository = productRepository;
+        this.accountRepository = accountRepository;
     }
 
     @EventListener(ContextRefreshedEvent.class)
@@ -101,5 +105,18 @@ public class InitialData {
                 .build());
     }
 
+    @EventListener(ContextRefreshedEvent.class)
+    public void addUsersToDB() {
+        log.info("Persisted account data to database");
 
+        accountRepository.save(new Account.AccountBuilder()
+                .withName("user")
+                .withPassword("123")
+                .build());
+
+        accountRepository.save(new Account.AccountBuilder()
+                .withName("user2")
+                .withPassword("1234")
+                .build());
+    }
 }

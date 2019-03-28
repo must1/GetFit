@@ -1,13 +1,8 @@
 package trainingapp.account;
 
 import lombok.*;
-import trainingapp.product.Product;
-import trainingapp.product.ProductType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -23,10 +18,13 @@ public class Account {
     private String name;
     private String password;
 
+    public Account(int userID) {
+        this.id = userID;
+    }
+
     public static class AccountBuilder {
         String name;
         String password;
-
 
         public AccountBuilder withName(String name) {
             this.name = name;

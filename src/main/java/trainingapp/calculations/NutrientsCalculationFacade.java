@@ -1,15 +1,16 @@
-package trainingapp.userproduct;
+package trainingapp.calculations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import trainingapp.userproduct.UserProduct;
 
 @Service
-public class UserProductCalculationFacade {
+public class NutrientsCalculationFacade {
 
-    private final UserProductCalculationService userProductCalculationService;
+    private final NutrientsCalculationService userProductCalculationService;
 
     @Autowired
-    public UserProductCalculationFacade(UserProductCalculationService userProductCalculationService) {
+    public NutrientsCalculationFacade(NutrientsCalculationService userProductCalculationService) {
         this.userProductCalculationService = userProductCalculationService;
     }
 
@@ -27,4 +28,5 @@ public class UserProductCalculationFacade {
                 " Calculated protein: " + calculatedProtein +
                 " Calculated carbohydrates: " + calculatedCarbohydrates;
     }
+
 }

@@ -1,9 +1,7 @@
 package trainingapp.userproduct;
 
-import org.h2.engine.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +14,6 @@ public class UserProductFindOperationService {
     @Autowired
     UserProductFindOperationService(UserProductRepository userProductRepository) {
         this.userProductRepository = userProductRepository;
-
     }
 
     List<UserProduct> getAllUserProducts() {

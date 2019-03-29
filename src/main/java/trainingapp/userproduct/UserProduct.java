@@ -1,13 +1,10 @@
 package trainingapp.userproduct;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import trainingapp.account.Account;
-import trainingapp.product.Product;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -15,6 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+public
 class UserProduct {
 
     @Id
@@ -29,5 +27,6 @@ class UserProduct {
     private double proteinNumber;
     private double carbohydratesNumber;
     private int kcalNumber;
-    private LocalDateTime dateOfEatenProduct;
+    private LocalDate dateOfEatenProduct;
 }
+

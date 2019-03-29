@@ -16,8 +16,7 @@ public class HistorySystemService {
         this.userProductRepository = userProductRepository;
     }
 
-    public double countFatOfAllMealsByGivenIDAndDate(int userID, LocalDate date) {
-        System.out.println(date);
+    private double countFatOfAllMealsByGivenIDAndDate(int userID, LocalDate date) {
         if (userProductRepository.countFatOfAllMealsByGivenID(userID, date) == null)
             return 0;
         else {
@@ -25,16 +24,28 @@ public class HistorySystemService {
         }
     }
 
-    private int countCaloriesOfAllMealsByGivenIDAndDate(int userID, LocalDate day) {
-        return 0;
+    private int countCaloriesOfAllMealsByGivenIDAndDate(int userID, LocalDate date) {
+        if (userProductRepository.countFatOfAllMealsByGivenID(userID, date) == null)
+            return 0;
+        else {
+            return userProductRepository.countCaloriesOfAllMealsByGivenIDInParticularDay(userID, date);
+        }
     }
 
-    private double countCarbohydratesOfAllMealsByGivenIDAndDate(int userID, LocalDate day) {
-        return 0;
+    private double countCarbohydratesOfAllMealsByGivenIDAndDate(int userID, LocalDate date) {
+        if (userProductRepository.countFatOfAllMealsByGivenID(userID, date) == null)
+            return 0;
+        else {
+            return userProductRepository.countCarbohydratesOfAllMealsByGivenID(userID, date);
+        }
     }
 
-    private double countProteinsOfAllMealsByGivenIDAndDate(int userID, LocalDate day) {
-        return 0;
+    private double countProteinsOfAllMealsByGivenIDAndDate(int userID, LocalDate date) {
+        if (userProductRepository.countFatOfAllMealsByGivenID(userID, date) == null)
+            return 0;
+        else {
+            return userProductRepository.countProteinOfAllMealsByGivenID(userID, date);
+        }
     }
 
     public String getAllEatenSummedNutrientsByGivenIDInParticularDay(int userID, LocalDate date) {

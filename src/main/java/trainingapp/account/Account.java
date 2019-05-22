@@ -1,6 +1,7 @@
 package trainingapp.account;
 
 import lombok.*;
+import trainingapp.exercises.BodyPartType;
 
 import javax.persistence.*;
 
@@ -17,14 +18,12 @@ public class Account {
     private int id;
     private String name;
     private String password;
-
-    public Account(int userID) {
-        this.id = userID;
-    }
+    private BodyPartType favouriteBodyPart;
 
     public static class AccountBuilder {
-        String name;
-        String password;
+        private String name;
+        private String password;
+        private BodyPartType favouriteBodyPart;
 
         public AccountBuilder withName(String name) {
             this.name = name;
@@ -36,9 +35,15 @@ public class Account {
             return this;
         }
 
+        public AccountBuilder withFavouritePartOfBody(BodyPartType favouriteBodyPart) {
+            this.favouriteBodyPart = favouriteBodyPart;
+            return this;
+        }
+
         public Account build() {
             Account account = new Account();
             account.password = this.password;
+            account.favouriteBodyPart = this.favouriteBodyPart;
             account.name = this.name;
             return account;
         }

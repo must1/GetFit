@@ -16,7 +16,7 @@ public class UserProductFindOperationService {
         this.userProductRepository = userProductRepository;
     }
 
-    List<UserProduct> getAllUserProducts() {
+    List<UserProduct> getAllUsersProducts() {
         List<UserProduct> userProducts = new ArrayList<>();
         userProductRepository.findAll().forEach(userProducts::add);
         return userProducts;

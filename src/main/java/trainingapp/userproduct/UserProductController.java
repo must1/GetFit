@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import trainingapp.calculations.NutrientsCalculationFacade;
-import trainingapp.historysystemofmeals.HistorySystemService;
+import trainingapp.historyofmealsystem.HistorySystemService;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -25,13 +24,13 @@ public class UserProductController {
     }
 
     @PostMapping("/countNutrients")
-    public String countNutrientsOfGivenProduct(@RequestBody UserProduct givenProductWithUserID) {
+    public String getNutrientsOfGivenProductAndAddProductToUserProductDB(@RequestBody UserProduct givenProductWithUserID) {
         return userProductCalculationFacade.getNutrientsOfGivenProductAndAddProductToUserProductDB(givenProductWithUserID);
     }
 
-    @GetMapping("/userProducts")
-    public List<UserProduct> getAllUserProducts() {
-        return userProductFindOperationService.getAllUserProducts();
+    @GetMapping("/usersProducts")
+    public List<UserProduct> getAllUsersProducts() {
+        return userProductFindOperationService.getAllUsersProducts();
     }
 
     //yyyy-MM-dd
@@ -41,5 +40,4 @@ public class UserProductController {
                                                                      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         return historySystemService.getAllEatenSummedNutrientsByGivenIDInParticularDay(userID, date);
     }
-
 }

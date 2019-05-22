@@ -28,5 +28,4 @@ public class NutrientsCalculationFacade {
                 " Calculated protein: " + calculatedProtein +
                 " Calculated carbohydrates: " + calculatedCarbohydrates;
     }
-
 }

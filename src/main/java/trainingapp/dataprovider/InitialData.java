@@ -7,6 +7,9 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import trainingapp.account.Account;
 import trainingapp.account.AccountRepository;
+import trainingapp.exercises.BodyPartType;
+import trainingapp.exercises.Exercise;
+import trainingapp.exercises.ExerciseRepository;
 import trainingapp.product.Product;
 import trainingapp.product.ProductRepository;
 import trainingapp.product.ProductType;
@@ -17,11 +20,13 @@ public class InitialData {
 
     private final ProductRepository productRepository;
     private final AccountRepository accountRepository;
+    private final ExerciseRepository exerciseRepository;
 
     @Autowired
-    public InitialData(ProductRepository productRepository, AccountRepository accountRepository) {
+    public InitialData(ProductRepository productRepository, AccountRepository accountRepository, ExerciseRepository exerciseRepository) {
         this.productRepository = productRepository;
         this.accountRepository = accountRepository;
+        this.exerciseRepository = exerciseRepository;
     }
 
     @EventListener(ContextRefreshedEvent.class)
@@ -112,11 +117,43 @@ public class InitialData {
         accountRepository.save(new Account.AccountBuilder()
                 .withName("user")
                 .withPassword("123")
+                .withFavouritePartOfBody(BodyPartType.BACK)
                 .build());
 
         accountRepository.save(new Account.AccountBuilder()
                 .withName("user2")
                 .withPassword("1234")
+                .withFavouritePartOfBody(BodyPartType.TRICEPS)
+                .build());
+
+        accountRepository.save(new Account.AccountBuilder()
+                .withName("user3")
+                .withPassword("12345")
+                .withFavouritePartOfBody(BodyPartType.TRICEPS)
+                .build());
+    }
+
+
+    @EventListener(ContextRefreshedEvent.class)
+    public void addExercisesToDB() {
+        log.info("Persisted exercises data to database");
+
+        exerciseRepository.save(new Exercise.ExerciseBuilder()
+                .withName("Triceps1")
+                .withType(BodyPartType.TRICEPS)
+                .withDescription("TricepsDescription1")
+                .build());
+
+        exerciseRepository.save(new Exercise.ExerciseBuilder()
+                .withName("Back1")
+                .withType(BodyPartType.BACK)
+                .withDescription("BackDescritpion")
+                .build());
+
+        exerciseRepository.save(new Exercise.ExerciseBuilder()
+                .withName("BICEPS1")
+                .withType(BodyPartType.BICEPS)
+                .withDescription("BicepsDescritpion")
                 .build());
     }
 }

@@ -18,12 +18,12 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    String name;
-    double fatNumber;
-    double proteinNumber;
-    ProductType TYPE;
-    double carbohydratesNumber;
-    int kcalNumber;
+    private String name;
+    private double fatNumber;
+    private double proteinNumber;
+    private ProductType TYPE;
+    private double carbohydratesNumber;
+    private int kcalNumber;
 
     public static class ProductBuilder {
         String name;

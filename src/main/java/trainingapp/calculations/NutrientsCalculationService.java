@@ -9,7 +9,6 @@ import trainingapp.userproduct.UserProduct;
 import trainingapp.userproduct.UserProductRepository;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Service
 public class NutrientsCalculationService {
@@ -75,6 +74,4 @@ public class NutrientsCalculationService {
             throw new IllegalArgumentException("Account does not exist with given ID!");
         }
     }
-
-
 }

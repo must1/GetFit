@@ -31,7 +31,9 @@ public class ProductCrudService {
     }
 
     Product deleteProduct(int id) {
-        Product productToDelete = productRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Product does not exist!"));
+        Product productToDelete = productRepository
+                .findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Product does not exist!"));
         productRepository.delete(productToDelete);
         return productToDelete;
     }

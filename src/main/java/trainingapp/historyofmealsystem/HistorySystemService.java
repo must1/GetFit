@@ -17,34 +17,38 @@ public class HistorySystemService {
     }
 
     private double countFatOfAllMealsByGivenIDAndDate(int userID, LocalDate date) {
-        if (userProductRepository.countFatOfAllMealsByGivenID(userID, date) == null)
+        Double fatOfAllMealsWithDate = userProductRepository.countFatOfAllMealsByGivenID(userID, date);
+        if (fatOfAllMealsWithDate == null)
             return 0;
         else {
-            return userProductRepository.countFatOfAllMealsByGivenID(userID, date);
+            return fatOfAllMealsWithDate;
         }
     }
 
     private int countCaloriesOfAllMealsByGivenIDAndDate(int userID, LocalDate date) {
-        if (userProductRepository.countFatOfAllMealsByGivenID(userID, date) == null)
+        Integer caloriesOfAllMealsWithDate = userProductRepository.countCaloriesOfAllMealsByGivenIDInParticularDay(userID, date);
+        if (caloriesOfAllMealsWithDate == null)
             return 0;
         else {
-            return userProductRepository.countCaloriesOfAllMealsByGivenIDInParticularDay(userID, date);
+            return caloriesOfAllMealsWithDate;
         }
     }
 
     private double countCarbohydratesOfAllMealsByGivenIDAndDate(int userID, LocalDate date) {
-        if (userProductRepository.countFatOfAllMealsByGivenID(userID, date) == null)
+        Double carbohydratesOfAllMealsWithDate = userProductRepository.countCarbohydratesOfAllMealsByGivenID(userID, date);
+        if (carbohydratesOfAllMealsWithDate == null)
             return 0;
         else {
-            return userProductRepository.countCarbohydratesOfAllMealsByGivenID(userID, date);
+            return carbohydratesOfAllMealsWithDate;
         }
     }
 
     private double countProteinsOfAllMealsByGivenIDAndDate(int userID, LocalDate date) {
-        if (userProductRepository.countFatOfAllMealsByGivenID(userID, date) == null)
+        Double proteinsOfAllMealsWithDate = userProductRepository.countProteinOfAllMealsByGivenID(userID, date);
+        if (proteinsOfAllMealsWithDate == null)
             return 0;
         else {
-            return userProductRepository.countProteinOfAllMealsByGivenID(userID, date);
+            return proteinsOfAllMealsWithDate;
         }
     }
 

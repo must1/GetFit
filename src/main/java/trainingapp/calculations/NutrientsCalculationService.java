@@ -45,7 +45,7 @@ public class NutrientsCalculationService {
         return (kcalNumber * productToCalculate.getGram()) / ONE_HUNDRED_GRAMS;
     }
 
-    private Product retrieveGivenProductFromDB(UserProduct productToCalculate) {
+     Product retrieveGivenProductFromDB(UserProduct productToCalculate) {
         if (productToCalculate.getGram() > 0) {
             return productRepository.findByName(productToCalculate.getName())
                     .orElseThrow(() -> new IllegalArgumentException("Product does not exist!"));

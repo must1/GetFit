@@ -28,5 +28,12 @@ class UserProduct {
     private double carbohydratesNumber;
     private int kcalNumber;
     private LocalDate dateOfEatenProduct;
+
+    public UserProduct(int userID, String name, int gram, double fatNumber) {
+        this.userID = userID;
+        this.name = name;
+        this.gram = gram;
+        this.fatNumber = fatNumber;
+    }
 }
 

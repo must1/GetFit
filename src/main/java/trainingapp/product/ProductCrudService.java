@@ -41,5 +41,4 @@ public class ProductCrudService {
     Product updateProduct(Product productToUpdate) {
         return productRepository.save(productToUpdate);
     }
-
 }
